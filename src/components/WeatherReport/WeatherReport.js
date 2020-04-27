@@ -2,19 +2,17 @@ import React from "react";
 import WeatherReportStyles from "./WeatherReport.styles";
 
 const report = (props) => {
-  console.log("props.responseObj", props.responseObj);
-
   const classes = WeatherReportStyles();
   return (
     <div>
-      {props.responseObj.cod === 200 ? (
+      {props.responseObj ? (
         <div className={classes.Wrapper}>
-          {props.error && <small>Please enter a valid city.</small>}
-          {props.loading && <div>Loading...</div>}
           <p>
-            <strong>{props.responseObj.name}</strong>
+            <strong data-testid="weather-report-name">
+              {props.responseObj.name}
+            </strong>
           </p>
-          <p>
+          <p data-testid="weather-report-container">
             It is currently {Math.round(props.responseObj.main.temp)} degrees
             out with {props.responseObj.weather[0].description}.
           </p>

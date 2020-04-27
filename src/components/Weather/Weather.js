@@ -10,19 +10,19 @@ import {
   InputLabel,
   Grid,
 } from "@material-ui/core";
-import ForecastStyles from "./Forecast.styles";
+import WeatherStyles from "./Weather.styles";
 import WeatherReport from "../WeatherReport/WeatherReport";
 
-const Forecast = () => {
+const Weather = () => {
   let [responseObj, setResponseObj] = useState({});
   let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
   let [error, setError] = useState(false);
   let [loading, setLoading] = useState(false);
 
-  const classes = ForecastStyles();
+  const classes = WeatherStyles();
 
-  async function getForecast(e) {
+  async function getWeather(e) {
     e.preventDefault();
 
     if (city.length === 0) {
@@ -64,15 +64,22 @@ const Forecast = () => {
   }
 
   return (
-    <form onSubmit={getForecast}>
+    <form onSubmit={getWeather}>
       <FormGroup className={classes.formGroup}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={12} lg={12}>
-            <WeatherReport
-              responseObj={responseObj}
-              error={error}
-              loading={loading}
-            />
+            {responseObj && responseObj.status === 200 ? (
+              <WeatherReport
+                responseObj={responseObj}
+                error={error}
+                loading={loading}
+              />
+            ) : (
+              <div>
+                {error && <small>Please enter a valid city.</small>}
+                {loading && <div>Loading...</div>}
+              </div>
+            )}
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
             <TextField
@@ -114,4 +121,4 @@ const Forecast = () => {
   );
 };
 
-export default Forecast;
+export default Weather;

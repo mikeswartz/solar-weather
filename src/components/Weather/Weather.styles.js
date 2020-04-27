@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const ForecastStyles = makeStyles((theme) => ({
+const WeatherStyles = makeStyles((theme) => ({
   formGroup: {
     maxWidth: 600,
     margin: "auto",
@@ -19,4 +19,4 @@ const ForecastStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ForecastStyles;
+export default WeatherStyles;

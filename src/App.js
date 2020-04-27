@@ -1,6 +1,6 @@
 import React from "react";
 import AppStyles from "./App.styles";
-import Forecast from "./components/Forecast/Forecast";
+import Weather from "./components/Weather/Weather";
 import WbSunnySharpIcon from "@material-ui/icons/WbSunnySharp";
 
 import "typeface-roboto";
@@ -12,7 +12,7 @@ function App() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} component="div">
+          <Typography className={classes.title} component="div" gutterBottom>
             <Box fontWeight="fontWeightBold" fontSize="h4.fontSize">
               <WbSunnySharpIcon /> SOLAR WEATHER
             </Box>
@@ -23,9 +23,11 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <Typography component="div" gutterBottom>
-        <Forecast />
-      </Typography>
+      <div className={classes.main}>
+        <Typography component="div" gutterBottom>
+          <Weather />
+        </Typography>
+      </div>
 
       <div className={classes.footer}>
         <Typography component="div" gutterBottom>
