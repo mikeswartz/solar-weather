@@ -8,7 +8,6 @@ const report = (props) => {
       {props.responseObj ? (
         <div className={classes.Wrapper}>
           {props.responseObj.error && <small>Please enter a valid city.</small>}
-          {props.responseObj.loading && <div>Loading...</div>}
         </div>
       ) : null}
     </div>

@@ -1,7 +1,9 @@
 ### `Environment setup`
 
-This project requires a .env file at the root of the project. This will hold the API key for https://openweathermap.org/ API calls.
-REACT_APP_API_KEY="{YOUR API KEY HERE}"
+Create a `.env` file a the root of this project.
+Add the following to your .env file along with your API key from https://openweathermap.org/.
+
+`REACT_APP_API_KEY="{YOUR API KEY HERE}"`
 
 ---
 

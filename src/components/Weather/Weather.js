@@ -68,18 +68,11 @@ const Weather = () => {
       <FormGroup className={classes.formGroup}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={12} lg={12}>
-            {responseObj && responseObj.status === 200 ? (
-              <WeatherReport
-                responseObj={responseObj}
-                error={error}
-                loading={loading}
-              />
-            ) : (
-              <div>
-                {error && <small>Please enter a valid city.</small>}
-                {loading && <div>Loading...</div>}
-              </div>
-            )}
+            <WeatherReport
+              responseObj={responseObj}
+              error={error}
+              loading={loading}
+            />
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
             <TextField

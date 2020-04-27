@@ -1,11 +1,16 @@
 import React from "react";
 import WeatherReportStyles from "./WeatherReport.styles";
+import WeatherReportError from "../WeatherReportError/WeatherReportError";
 
 const report = (props) => {
   const classes = WeatherReportStyles();
   return (
     <div>
-      {props.responseObj ? (
+      {props.error && <WeatherReportError error={props.error} />}
+
+      {props.loading && <div>LOADING...</div>}
+
+      {props.responseObj && props.responseObj.cod === 200 ? (
         <div className={classes.Wrapper}>
           <p>
             <strong data-testid="weather-report-name">
