@@ -81,6 +81,7 @@ const Weather = () => {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               margin="normal"
+              error={error}
               className={classes.textField}
             />
           </Grid>
@@ -105,7 +106,7 @@ const Weather = () => {
               variant="contained"
               className={classes.button}
             >
-              Get Current Weather
+              Get The Weather
             </Button>
           </Grid>
         </Grid>

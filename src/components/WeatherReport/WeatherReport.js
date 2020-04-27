@@ -1,4 +1,5 @@
 import React from "react";
+import { CircularProgress } from "@material-ui/core";
 import WeatherReportStyles from "./WeatherReport.styles";
 import WeatherReportError from "../WeatherReportError/WeatherReportError";
 
@@ -8,7 +9,11 @@ const report = (props) => {
     <div>
       {props.error && <WeatherReportError error={props.error} />}
 
-      {props.loading && <div>LOADING...</div>}
+      {props.loading && (
+        <div className={classes.loading}>
+          <CircularProgress color="primary" />
+        </div>
+      )}
 
       {props.responseObj && props.responseObj.cod === 200 ? (
         <div className={classes.Wrapper}>
