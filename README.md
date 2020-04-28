@@ -1,9 +1,17 @@
 ### `Environment setup`
 
-Create a `.env` file a the root of this project.
-Add the following to your .env file along with your API key from https://openweathermap.org/.
+Create a `.env` file a the root of this project for the enviornment you wish to run the app in.
+
+Add the following to your .env file along with your API key from https://openweathermap.org/
+
+Add the weather API endpoint from openweathermap.org as well
 
 `REACT_APP_API_KEY="{YOUR API KEY HERE}"`
+`REACT_APP_API_OPEN_WEATHER_MAP = "//api.openweathermap.org/data/2.5/weather"`
+
+DO NOT commit the .env file, it is explicitly excluded in .gitignore
+
+Private API keys should only be used server side, to prevent exposing keys that are not public.
 
 ---
 

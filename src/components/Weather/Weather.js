@@ -34,11 +34,12 @@ const Weather = () => {
     setLoading(true);
 
     try {
-      const APIKey = process.env.REACT_APP_API_KEY; // Replace with your key if not in .env file
+      const APIKey = process.env.REACT_APP_API_KEY; // REACT_APP_API_KEY should be set in your environment specific .env file.
+      const APIEndpoint = process.env.REACT_APP_API_OPEN_WEATHER_MAP;
 
       const response = await axios({
         method: "GET",
-        url: "//api.openweathermap.org/data/2.5/weather",
+        url: `${APIEndpoint}`,
         params: {
           q: `${city}`,
           units: `${unit}`,
