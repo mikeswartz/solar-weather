@@ -106,6 +106,7 @@ const Weather = () => {
               variant="contained"
               className={classes.button}
               data-testid="weather-submit-button"
+              disabled={!city}
             >
               Get The Weather
             </Button>
