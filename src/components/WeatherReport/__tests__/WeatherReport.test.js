@@ -3,18 +3,19 @@ import { render } from "@testing-library/react";
 import WeatherReport from "../WeatherReport";
 import OpenWeatherRes from "../../../../mocks/OpenWeatherRes.mock";
 
-it("renders without crashing", () => {
+// Crash Check
+it("renders weather results without crashing", () => {
   const div = document.createElement("div");
   render(<WeatherReport />, div);
 });
 
-test("renders It is currently text", () => {
+// City
+test("renders weather results city text", () => {
   const { getByText } = render(<WeatherReport responseObj={OpenWeatherRes} />);
   const currElement = getByText(/Mountain View/i);
   expect(currElement).toBeInTheDocument();
 });
-
-test("renders span for city", () => {
+test("renders weather results span for city text", () => {
   const { getByTestId } = render(
     <WeatherReport responseObj={OpenWeatherRes} />
   );
@@ -22,10 +23,16 @@ test("renders span for city", () => {
   expect(currElement).toBeInTheDocument();
 });
 
-test("renders container for weather results", () => {
+// Description
+test("renders weather results description text", () => {
+  const { getByText } = render(<WeatherReport responseObj={OpenWeatherRes} />);
+  const currElement = getByText(/clear sky/i);
+  expect(currElement).toBeInTheDocument();
+});
+test("renders weather results description span", () => {
   const { getByTestId } = render(
     <WeatherReport responseObj={OpenWeatherRes} />
   );
-  const currElement = getByTestId("weather-report-container");
+  const currElement = getByTestId("weather-report-description");
   expect(currElement).toBeInTheDocument();
 });

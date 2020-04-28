@@ -8,7 +8,10 @@ const report = (props) => {
   return (
     <>
       {props.error ? (
-        <Card className={classes.Wrapper}>
+        <Card
+          className={classes.Wrapper}
+          data-testid="weather-report-error-wrapper"
+        >
           <p>
             Uh Oh!
             <br />

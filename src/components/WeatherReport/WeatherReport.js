@@ -3,10 +3,10 @@ import { CircularProgress } from "@material-ui/core";
 import WeatherReportStyles from "./WeatherReport.styles";
 import WeatherReportError from "../WeatherReportError/WeatherReportError";
 
-const report = (props) => {
+const WeatherReport = (props) => {
   const classes = WeatherReportStyles();
   return (
-    <div>
+    <div className="Wrapper">
       {props.error && <WeatherReportError error={props.error} />}
 
       {props.loading && (
@@ -17,18 +17,33 @@ const report = (props) => {
 
       {props.responseObj && props.responseObj.cod === 200 ? (
         <div className={classes.Wrapper}>
-          <p>
-            <strong data-testid="weather-report-name">
-              {props.responseObj.name}
-            </strong>
-          </p>
-          <p data-testid="weather-report-container">
-            It is currently {Math.round(props.responseObj.main.temp)} degrees
-            out with {props.responseObj.weather[0].description}.
-          </p>
+          {props.responseObj.name && (
+            <h2 data-testid="weather-report-name">{props.responseObj.name}</h2>
+          )}
+
+          <h3>
+            {Math.round(props.responseObj.main.temp)} &deg;
+            {props.responseObj.unit === "imperial" ? "F" : "C"}
+          </h3>
+
+          {props.responseObj.weather[0].icon &&
+            props.responseObj.weather[0].main &&
+            props.responseObj.weather[0].description && (
+              <>
+                <img
+                  alt={`${props.responseObj.weather[0].main}`}
+                  src={`http://openweathermap.org/img/wn/${props.responseObj.weather[0].icon}@2x.png`}
+                  data-testid="weather-report-icon-image"
+                />
+                <br />
+                <span data-testid="weather-report-description">
+                  {props.responseObj.weather[0].description.toUpperCase()}.
+                </span>
+              </>
+            )}
         </div>
       ) : null}
     </div>
   );
 };
-export default report;
+export default WeatherReport;

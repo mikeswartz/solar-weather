@@ -2,13 +2,20 @@ import React from "react";
 import { render } from "@testing-library/react";
 import WeatherReportError from "../WeatherReportError";
 
+// Crash Check
 it("renders without crashing", () => {
   const div = document.createElement("div");
   render(<WeatherReportError />, div);
 });
 
-// test("renders learn react link", () => {
-//   const { getByText } = render(<WeatherReportError />);
-//   const linkElement = getByText(/please enter a valid city/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+// Error
+test("renders weather results city text", () => {
+  const { getByText } = render(<WeatherReportError error={true} />);
+  const currElement = getByText(/Uh Oh!/i);
+  expect(currElement).toBeInTheDocument();
+});
+test("renders weather results span for city text", () => {
+  const { getByTestId } = render(<WeatherReportError error={true} />);
+  const currElement = getByTestId("weather-report-error-wrapper");
+  expect(currElement).toBeInTheDocument();
+});

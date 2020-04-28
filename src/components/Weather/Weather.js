@@ -53,7 +53,6 @@ const Weather = () => {
       }
 
       const { data } = response;
-
       setResponseObj(data);
       setLoading(false);
     } catch (e) {
@@ -72,6 +71,7 @@ const Weather = () => {
               responseObj={responseObj}
               error={error}
               loading={loading}
+              unit={unit}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
@@ -83,6 +83,7 @@ const Weather = () => {
               margin="normal"
               error={error}
               className={classes.textField}
+              data-testid="weather-text-field-city"
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
@@ -93,6 +94,7 @@ const Weather = () => {
                 id="units"
                 value={unit}
                 onChange={(e) => setUnit(e.target.value)}
+                data-testid="weather-select-unit"
               >
                 <MenuItem value={"imperial"}>Fahrenheit</MenuItem>
                 <MenuItem value={"metric"}>Celcius</MenuItem>
@@ -105,6 +107,7 @@ const Weather = () => {
               color="primary"
               variant="contained"
               className={classes.button}
+              data-testid="weather-submit-button"
             >
               Get The Weather
             </Button>
