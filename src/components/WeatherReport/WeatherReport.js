@@ -17,14 +17,22 @@ const WeatherReport = (props) => {
 
       {props.responseObj && props.responseObj.cod === 200 ? (
         <div className={classes.Wrapper}>
-          {props.responseObj.name && (
-            <h2 data-testid="weather-report-name">{props.responseObj.name}</h2>
-          )}
+          {props.responseObj.name &&
+            props.responseObj.sys &&
+            props.responseObj.sys.country && (
+              <h2 data-testid="weather-report-name">
+                {props.responseObj.name}, {props.responseObj.sys.country}
+              </h2>
+            )}
 
-          <h3>
-            {Math.round(props.responseObj.main.temp)} &deg;
-            {props.responseObj.unit === "imperial" ? "F" : "C"}
-          </h3>
+          {props.responseObj.main &&
+            props.responseObj.main.temp &&
+            props.responseObj.unit && (
+              <h3>
+                {Math.round(props.responseObj.main.temp)} &deg;
+                {props.responseObj.unit === "imperial" ? "F" : "C"}
+              </h3>
+            )}
 
           {props.responseObj.weather[0].icon &&
             props.responseObj.weather[0].main &&
