@@ -5,6 +5,7 @@ import WeatherReportError from "../WeatherReportError/WeatherReportError";
 
 const WeatherReport = (props) => {
   const classes = WeatherReportStyles();
+
   return (
     <div className="Wrapper">
       {props.error && <WeatherReportError error={props.error} />}
@@ -25,14 +26,16 @@ const WeatherReport = (props) => {
               </h2>
             )}
 
-          {props.responseObj.main &&
-            props.responseObj.main.temp &&
-            props.responseObj.unit && (
-              <h3>
-                {Math.round(props.responseObj.main.temp)} &deg;
-                {props.responseObj.unit === "imperial" ? "F" : "C"}
-              </h3>
-            )}
+          {props.responseObj.main && props.responseObj.main.temp && props.unit && (
+            <h3>
+              <span data-testid="weather-report-temp">
+                {Math.round(props.responseObj.main.temp)}
+              </span>
+              <span data-testid="weather-report-unit">
+                &deg;{props.unit === "imperial" ? "F" : "C"}
+              </span>
+            </h3>
+          )}
 
           {props.responseObj.weather[0].icon &&
             props.responseObj.weather[0].main &&
