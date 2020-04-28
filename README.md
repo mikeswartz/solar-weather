@@ -7,6 +7,7 @@ Add the following to your .env file along with your API key from https://openwea
 Add the weather API endpoint from openweathermap.org as well
 
 `REACT_APP_API_KEY="{YOUR API KEY HERE}"`
+
 `REACT_APP_API_OPEN_WEATHER_MAP = "//api.openweathermap.org/data/2.5/weather"`
 
 DO NOT commit the .env file, it is explicitly excluded in .gitignore
