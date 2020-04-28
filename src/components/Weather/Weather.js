@@ -17,6 +17,7 @@ const Weather = () => {
   let [responseObj, setData] = useState({});
   let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
+  let [unitProp, setUnitProp] = useState("imperial"); // Prevents updating unit in WeatherReport component before submit
   let [error, setError] = useState(false);
   let [loading, setLoading] = useState(false);
 
@@ -53,6 +54,7 @@ const Weather = () => {
 
       const { data } = response;
       setData(data);
+      setUnitProp(unit);
       setLoading(false);
     } catch (e) {
       setError(true);
@@ -70,7 +72,7 @@ const Weather = () => {
               responseObj={responseObj}
               error={error}
               loading={loading}
-              unit={unit}
+              unit={unitProp}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
