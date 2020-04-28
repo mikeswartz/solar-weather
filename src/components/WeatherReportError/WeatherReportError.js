@@ -12,11 +12,7 @@ const report = (props) => {
           className={classes.Wrapper}
           data-testid="weather-report-error-wrapper"
         >
-          <p>
-            Uh Oh!
-            <br />
-            Please fix the issues below to get a weather report.
-          </p>
+          <h2>Uh Oh!</h2>
         </Card>
       ) : null}
     </>

@@ -23,18 +23,9 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <div className={classes.main}>
-        <Typography component="div" gutterBottom>
-          <Weather />
-        </Typography>
-      </div>
-
-      <div className={classes.footer}>
-        <Typography component="div" gutterBottom>
-          AlmostReal&reg; Time
-          <br /> by SolarWeather&trade;
-        </Typography>
-      </div>
+      <Typography component="div" gutterBottom>
+        <Weather />
+      </Typography>
     </div>
   );
 }

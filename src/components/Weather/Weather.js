@@ -14,7 +14,7 @@ import WeatherStyles from "./Weather.styles";
 import WeatherReport from "../WeatherReport/WeatherReport";
 
 const Weather = () => {
-  let [responseObj, setResponseObj] = useState({});
+  let [responseObj, setData] = useState({});
   let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
   let [error, setError] = useState(false);
@@ -29,20 +29,18 @@ const Weather = () => {
       return setError(true);
     }
 
-    // Clear state in preparation for new data
     setError(false);
-    setResponseObj({});
+    setData({});
     setLoading(true);
 
     try {
-      const uriEncodedCity = encodeURIComponent(city);
       const APIKey = process.env.REACT_APP_API_KEY; // Replace with your key if not in .env file
 
       const response = await axios({
         method: "GET",
         url: "//api.openweathermap.org/data/2.5/weather",
         params: {
-          q: `${uriEncodedCity}`,
+          q: `${city}`,
           units: `${unit}`,
           appid: `${APIKey}`,
         },
@@ -53,7 +51,7 @@ const Weather = () => {
       }
 
       const { data } = response;
-      setResponseObj(data);
+      setData(data);
       setLoading(false);
     } catch (e) {
       setError(true);
