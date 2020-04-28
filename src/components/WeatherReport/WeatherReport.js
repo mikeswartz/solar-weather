@@ -45,7 +45,7 @@ const WeatherReport = (props) => {
                 />
                 <br />
                 <span data-testid="weather-report-description">
-                  {props.responseObj.weather[0].description.toUpperCase()}.
+                  {props.responseObj.weather[0].description.toUpperCase()}
                 </span>
               </>
             )}
